@@ -1,5 +1,13 @@
+# Project Solution
+*.sln
+*.sln.*
+
 # Visual Studio 2015 user specific files
 .vs/
+.vsconfig
+
+# Rider user specific files
+.idea/
 
 # Compiled Object files
 *.slo
