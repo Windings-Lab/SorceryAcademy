@@ -2,5 +2,6 @@
 
 #pragma once
 
-#include "CoreMinimal.h"
-
+DECLARE_LOG_CATEGORY_EXTERN(ErrorSorcery, Error, All);
+DECLARE_LOG_CATEGORY_EXTERN(WarningSorcery, Warning, All);
+DECLARE_LOG_CATEGORY_EXTERN(LogSorcery, Log, All);
