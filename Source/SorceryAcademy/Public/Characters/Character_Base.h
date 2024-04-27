@@ -3,15 +3,15 @@
 #pragma once
 
 #include "GameFramework/Character.h"
-#include "BaseCharacter.generated.h"
+#include "Character_Base.generated.h"
 
 UCLASS(config=Game)
-class ABaseCharacter : public ACharacter
+class ACharacter_Base : public ACharacter
 {
 	GENERATED_BODY()
 
 public:
-	ABaseCharacter();
+	ACharacter_Base();
 
 protected:
 	/** Called for movement input */

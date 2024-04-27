@@ -1,6 +1,4 @@
-// Copyright Epic Games, Inc. All Rights Reserved.
-
-#include "BaseCharacter.h"
+#include "Characters/Character_Base.h"
 #include "Engine/LocalPlayer.h"
 #include "Camera/CameraComponent.h"
 #include "Components/CapsuleComponent.h"
@@ -12,10 +10,7 @@
 #include "InputActionValue.h"
 #include "SorceryAcademy/SorceryAcademy.h"
 
-//////////////////////////////////////////////////////////////////////////
-// ATP_ThirdPersonCharacter
-
-ABaseCharacter::ABaseCharacter()
+ACharacter_Base::ACharacter_Base()
 {
 	// Set size for collision capsule
 	GetCapsuleComponent()->InitCapsuleSize(42.f, 96.0f);
@@ -53,7 +48,7 @@ ABaseCharacter::ABaseCharacter()
 	// are set in the derived blueprint asset named ThirdPersonCharacter (to avoid direct content references in C++)
 }
 
-void ABaseCharacter::BeginPlay()
+void ACharacter_Base::BeginPlay()
 {
 	// Call the base class  
 	Super::BeginPlay();
@@ -62,7 +57,7 @@ void ABaseCharacter::BeginPlay()
 //////////////////////////////////////////////////////////////////////////
 // Input
 
-void ABaseCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
+void ACharacter_Base::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
 	// Add Input Mapping Context
 	if (APlayerController* PlayerController = Cast<APlayerController>(GetController()))
@@ -81,10 +76,10 @@ void ABaseCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCompo
 		EnhancedInputComponent->BindAction(JumpAction, ETriggerEvent::Completed, this, &ACharacter::StopJumping);
 
 		// Moving
-		EnhancedInputComponent->BindAction(MoveAction, ETriggerEvent::Triggered, this, &ABaseCharacter::Move);
+		EnhancedInputComponent->BindAction(MoveAction, ETriggerEvent::Triggered, this, &ACharacter_Base::Move);
 
 		// Looking
-		EnhancedInputComponent->BindAction(LookAction, ETriggerEvent::Triggered, this, &ABaseCharacter::Look);
+		EnhancedInputComponent->BindAction(LookAction, ETriggerEvent::Triggered, this, &ACharacter_Base::Look);
 	}
 	else
 	{
@@ -92,7 +87,7 @@ void ABaseCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCompo
 	}
 }
 
-void ABaseCharacter::Move(const FInputActionValue& Value)
+void ACharacter_Base::Move(const FInputActionValue& Value)
 {
 	// input is a Vector2D
 	FVector2D MovementVector = Value.Get<FVector2D>();
@@ -115,7 +110,7 @@ void ABaseCharacter::Move(const FInputActionValue& Value)
 	}
 }
 
-void ABaseCharacter::Look(const FInputActionValue& Value)
+void ACharacter_Base::Look(const FInputActionValue& Value)
 {
 	// input is a Vector2D
 	FVector2D LookAxisVector = Value.Get<FVector2D>();
